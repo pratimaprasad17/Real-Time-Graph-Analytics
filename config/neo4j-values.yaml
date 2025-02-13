@@ -1,0 +1,33 @@
+neo4j:
+  version: "5.5.0"
+  name: "neo4j-stanalone"
+  password: "project1phase2"
+  edition: "community"
+  resources:
+    memory: "4Gi"
+    cpu: "2"
+
+  image:
+    repository: neo4j
+    tag: 5.5.0
+     
+volumes:
+  data:
+    mode: defaultStorageClass
+    defaultStorageClass:
+      requests:
+        storage: 10Gi
+        
+
+env:
+  NEO4J_PLUGINS: '["graph-data-science"]'
+
+config:
+  dbms.security.procedures.unrestricted: "gds.*"
+  server.config.strict_validation.enabled: "false"
+  dbms.security.procedures.allowlist: "gds.*"
+  
+  
+ 
+
+
